@@ -1,0 +1,127 @@
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/humanity/jquery-ui.css" />
+
+
+<b>SYNTEC, modalité standard : calcul de RTT en application des dispositions conventionnelles</b>
+<br/>
+<br/>
+<label for="amount1">Utilisez le curseur pour faire varier le nombres heures hebdomadaires effectives auquels les salariés sont soumis</label>
+<input type="text" id="amount1" style="border:0; color:#f6931f; font-weight:bold;" />
+<div id="slider1" style="width:100px"></div>
+<br />
+<br/>
+<label for="a_1">nb jours annuels</label>
+<input type="text" id="a_1" style="border:0; color:#f6931f; font-weight:bold;" />
+<br />
+<label for="a_2">nb jours week ends</label>
+<input type="text" id="a_2" style="border:0; color:#f6931f; font-weight:bold;" />
+<br />
+<label for="a_3">nb jours congés payés légaux</label>
+<input type="text" id="a_3" style="border:0; color:#f6931f; font-weight:bold;" />
+<br />
+<label for="a_4">nb jours fériés ET ouvrés en 2019</label>
+<input type="text" id="a_4" style="border:0; color:#f6931f; font-weight:bold;" />
+<br />
+<label for="a_5">nb semaines travaillées théoriques maximales (base 35h)<br/>(nbJoursAnnee - nbJoursCP - nbJoursWE - nbJoursFerieOuvre)/5:</label>
+<input type="text" id="a_5" style="border:0; color:#f6931f; font-weight:bold;" />
+<br />
+<label for="a_6">volume d'heure légal annuel (35 h annuel)</label>
+<input type="text" id="a_6" style="border:0; color:#f6931f; font-weight:bold;" />
+<br />
+<label for="a_7">contigent HS annuel (ETAM)</label>
+<input type="text" id="a_7" style="border:0; color:#f6931f; font-weight:bold;" />
+<br />
+<label for="amount2">nombre d'heures annuelle</label>
+<input type="text" id="amount2" style="border:0; color:#f6931f; font-weight:bold;" />
+<br />
+<label for="a_10">nombre d'HS hebdo</label>
+<input type="text" id="a_10" style="border:0; color:#f6931f; font-weight:bold;" />
+<br />
+<hr>
+<b>PERIODE 1 (année d'acquisition des droits)</b>
+<br/>
+<label for="a_8">=> HS payables à la fin d'une période d'un an complête sans que le salarié prenne de RTT</label>
+<input type="text" id="a_8" style="border:0; color:#f6931f; font-weight:bold;" />
+<br />
+<label for="a_9">=> RTT dus à la fin d'une période d'un an complête:</label>
+<input type="text" id="a_9" style="border:0; color:#f6931f; font-weight:bold;" />
+<br />
+<hr>
+<b>PERIODE 2 (année pour laquelle le salarié utilise ses droits RTT acquis en période 1)</b>
+<br/>
+<br />
+<label for="a_13">nb semaines travaillées réellement (base Xh)<br/>(nbJoursAnnee - nbJoursCP - nbJoursWE - nbJoursFerieOuvre - nbRTTPris)/5:</label>
+<input type="text" id="a_13" style="border:0; color:#f6931f; font-weight:bold;" />
+
+<br/>
+<label for="a_12">=> HS payables à la fin d'une période d'un an complête (si le salarié à pris tous ces RTT acquis sur la période preccédente) :</label>
+<input type="text" id="a_12" style="border:0; color:#f6931f; font-weight:bold;" />
+<br />
+
+<label for="a_11">=> RTT dus à la fin d'une période d'un an complête (si le salarié à pris tous ces RTT acquis sur la période preccédente) :</label>
+<input type="text" id="a_11" style="border:0; color:#f6931f; font-weight:bold;" />
+
+
+<script>
+var h35 = 1607;
+var hHebdo = 35;
+var hsMin = 0;
+var hsMax = 4;
+var nbJoursAnnee = 365;
+var nbJoursWE = 104;
+var nbJoursCP = 25;
+var nbJoursFerieOuvre = 9;
+var contingentHS = 130;
+
+var nbSemaineTravail35h = (nbJoursAnnee - nbJoursCP - nbJoursWE - nbJoursFerieOuvre) / 5;
+
+var nbSemaineTravailXhRTT = (nbJoursAnnee - nbJoursCP - nbJoursWE - nbJoursFerieOuvre - 0) / 5;
+
+$("#a_1").val(nbJoursAnnee);
+$("#a_2").val(nbJoursWE);
+$("#a_3").val(nbJoursCP);
+$("#a_4").val(nbJoursFerieOuvre);
+$("#a_5").val(nbSemaineTravail35h);
+$("#a_13").val(nbSemaineTravailXhRTT);
+$("#a_6").val(h35);
+$("#a_7").val(contingentHS);
+
+$("#slider1").slider({
+  step: 0.5,
+  min: hHebdo + hsMin,
+  max: hHebdo + hsMax,
+  slide: function(event, ui) {
+    var hAnnee = Math.round((ui.value - hHebdo) * nbSemaineTravail35h + h35);
+    $("#amount1").val(ui.value);
+    $("#amount2").val(hAnnee);
+    $("#amount1").val(ui.value);
+
+    $("#a_8").val(hAnnee - h35);
+    $("#a_9").val(Math.round((hAnnee - h35) / (ui.value / 5)));
+
+    $("#a_10").val(ui.value - hHebdo);
+    
+    
+    nbSemaineTravailXhRTT = (nbJoursAnnee - nbJoursCP - nbJoursWE - nbJoursFerieOuvre - $("#a_9").val()) / 5;
+    var hAnneeReel = Math.round((ui.value - hHebdo) * nbSemaineTravailXhRTT + h35);
+    
+$("#a_13").val(nbSemaineTravailXhRTT);
+
+    $("#a_12").val(hAnneeReel - h35);
+    
+    $("#a_11").val(Math.round((hAnneeReel - h35) / (ui.value / 5)));
+
+  }
+});
+$("#amount1").val($("#slider1").slider("value"));
+$("#amount2").val(h35);
+$("#a_8").val(0);
+$("#a_9").val(0);
+$("#a_10").val(0);
+
+$("#a_11").val(0);
+
+$("#a_13").val(0);
+
+$("#a_12").val(0);
+
+</script>
