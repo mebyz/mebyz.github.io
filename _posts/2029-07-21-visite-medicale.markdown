@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Visite médicale obligatoire
-date: 2019-07-13 13:32:20 +0300
+date: 2019-07-21 23:32:20 +0300
 description:  # Add post description (optional)
 img: visite.jpeg # Add image post (optional)
 fig-caption: # Add figcaption (optional)
