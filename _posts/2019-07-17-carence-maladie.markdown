@@ -3,7 +3,7 @@ layout: post
 title: Maintien de salaire pendant un arrêt maladie ou un congé maternité
 date: 2019-07-12 13:32:20 +0300
 description:  # Add post description (optional)
-img: # Add image post (optional)
+img: sante.png # Add image post (optional)
 fig-caption: # Add figcaption (optional)
 tags: [salaire,maladie,maternite]
 ---
