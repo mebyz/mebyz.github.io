@@ -5,7 +5,7 @@ date: 2019-07-13 13:32:20 +0300
 description:  # Add post description (optional)
 img: formation.png # Add image post (optional)
 fig-caption: # Add figcaption (optional)
-tags: [rtt]
+tags: [formation]
 ---
 L'article L. 6331-1 du Code du travail prévoit que l'employeur doit assurer l'adaptation des salariés à leur poste de travail et veiller au maintien de leur capacité à occuper un emploi au regard notamment de l'évolution des emplois, des technologies et des organisations.
 
