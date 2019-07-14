@@ -1,6 +1,6 @@
 ---
 layout: post
-title: SYNTEC, modalité standard : La formation est une obligation de l’employeur
+title: SYNTEC => La formation est une obligation de l’employeur
 date: 2019-07-13 13:32:20 +0300
 description:  # Add post description (optional)
 img: formation.png # Add image post (optional)
