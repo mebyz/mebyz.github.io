@@ -9,4 +9,4 @@ tags: [rtt]
 ---
 SYNTEC, modalité standard : calcul de RTT en application des dispositions conventionnelles
 
-[Outil de calcul de RTT sous convention SYNTEC en modalité standard](/syntec/index.hthml)
+[Outil de calcul de RTT sous convention SYNTEC en modalité standard](/syntec/)
