@@ -82,10 +82,23 @@
     .amp-pan-zoom-button {
   display: none;
 }
-    .c1{box-shadow: 0 0 5px 2px rgba(0,255,0,.35);background:rgba(254,255,253,.95);position:absolute;top:320px;width:95%;margin-left:5px; height:150px;padding:3px;}
+    body{
+   width: 450px;
+}
+.c0 {
+   width: 300px;
+   margin: 0 auto;
+}
+.c3 {
+   width: 500px;
+  position:absolute;
+}
+    .c1{max-width:300px;box-shadow: 0 0 5px 2px rgba(0,255,0,.35);background:rgba(254,255,253,.95);position:absolute;top:350px;width:95%;margin-left:5px; height:150px;padding:3px;}
     </style>
   </head> 
 <body>
+  <div class="c0">
+    
   <amp-video
         class="hero"
         width="1080"
@@ -96,7 +109,11 @@
 </amp-video>
    <h1>
      Title
-  </h1> 
+  </h1>   
+    <p>
+      lorem ipsum sit dolor       lorem ipsum sit dolor      lorem ipsum sit dolor      lorem ipsum sit dolor      lorem ipsum sit dolor
+    </p>
+ 
   <div class="c1">
     sssss
   </div>
@@ -107,7 +124,7 @@
     </amp-state>
     <div>
      <div class="seatmap-container">
-        <amp-list layout="fill" src="https://amp.dev/static/samples/json/seats.json" binding="refresh" items="." single-item noloading>
+        <amp-list layout="fill" src="/static/samples/json/seats.json" binding="refresh" items="." single-item noloading>
         <template type="amp-mustache">
           <amp-pan-zoom layout="fill" class="seatmap">
             <amp-selector multiple on="select:AMP.setState({
@@ -128,6 +145,7 @@
        
       </div>
     </div>
+  </div>
 <br>
 <br>
 <br>
@@ -137,14 +155,8 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-  <amp-iframe src="https://maphub.net/embed/70965?button=0&geolocation=1" frameborder="0" allow="geolocation" width="600" height="400" layout="responsive" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox" frameborder="0">
-  </amp-iframe>
-
   
+  <amp-iframe src="https://maphub.net/embed/70965?button=0&geolocation=1" frameborder="0" allow="geolocation" width="400" height="400" layout="responsive" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox" frameborder="0">
+  </amp-iframe>
 </body>
 </html>
